@@ -1,0 +1,513 @@
+:root {
+  --primary: #ff1b2d;
+  --secondary: #eb1527;
+  --dark: #1d1d1d;
+  --darker: #151515;
+  --light: #dddddd;
+  --white: #eeeeee;
+  --black: #111111;
+	/*--dark: #dddddd;
+  --darker: #e5e5e5;
+  --light: #1d1d1d;
+  --white: #111111;
+  --black: #eeeeee;*/
+  --success: #1dd91a;
+  --danger: #d91a1a;
+  --warning: #d9cf1a;
+  --info: #1a4dd9;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+* {
+  color: var(--white);
+  transition-duration: 0.5s;
+	transition-timing-function: ease-in-out;
+  font-family: 'Inter', sans-serif !important;
+	user-select: none;
+}
+
+body {
+  background-color: var(--dark);
+  overflow: hidden;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  left: 0px;
+}
+
+.notif {
+  background-color: var(--dark);
+  color: var(--white);
+  padding: 15px;
+  padding-top: 7.5px;
+  height: 10px;
+  border-radius: 20px;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  opacity: 0;
+  transition-duration: 0.5s;
+	z-index: 100000000;
+	box-shadow: var(--primary) 0px 0px 10px;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#navbar {
+  background-color: var(--dark);
+  top: 0;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  padding: 10px;
+  padding-left: 20px;
+  box-shadow: var(--black) 0px 0px 10px;
+  z-index: 999999999;
+}
+
+logo {
+  color: var(--primary);
+  font-size: 30px;
+  text-shadow: var(--primary) 0px 0px 10px;
+}
+#settingsButton {
+	width: 57px;
+	height: 57px;
+	background-image: url(https://i.ibb.co/NmMRr23/settings-FILL1-wght400-GRAD0-opsz48.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 50%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	filter: invert(0.5);
+}
+#settingsButton:hover {
+	scale: 1.03;
+}
+#chat {
+  display: none;
+  opacity: 0;
+}
+
+#startup input,
+#startup button {
+  margin: auto;
+  width: 200px;
+  display: block;
+  margin-bottom: 20px;
+  background-color: var(--black);
+  border: var(--primary) 1px solid;
+  box-shadow: var(--primary) 0px 0px 10px;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.gcImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+
+#startup input:focus,
+input:hover,
+button:hover,
+.gcImg:hover {
+  scale: 1.02;
+}
+.gcImg:hover {
+	box-shadow: var(--primary) 0px 0px 10px;
+}
+
+#startup h1,
+p {
+  text-align: center;
+  text-shadow: var(--white) 0px 0px 3px;
+}
+
+#startup a {
+  text-shadow: var(--primary) 0px 0px 3px;
+  color: var(--primary);
+  cursor: pointer;
+  display: inline;
+}
+
+#startup p {
+  display: inline;
+}
+
+#accountToggle {
+  text-align: center;
+}
+
+#startup .center {
+  border: var(--secondary) 1px solid;
+  border-radius: 10px;
+  box-shadow: var(--secondary) 0px 0px 10px;
+  padding: 30px;
+  background-color: var(--dark);
+}
+
+#sidebar {
+  top: 57px;
+  position: fixed;
+  height: calc(100% - 137px);
+  background-color: var(--darker);
+  left: 0px;
+  padding: 10px;
+  width: 50px;
+  z-index: 50;
+  filter: invert(0.02);
+  overflow: scroll;
+}
+#sideButton {
+	width: 70px;
+	height: 60px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 9999;
+	background-color: var(--darker);
+	filter: invert(0.03);
+	box-shadow: var(--black) 0px 0px 5px;
+}
+#sideText {
+	color: grey;
+	font-size: 50px;
+	z-index: 9999;
+	filter: invert(0.03);
+	text-align: center;
+	transform: rotate(0);
+	pointer-events: none;
+}
+#sideButton:hover {
+	filter: invert(0.06);
+}
+#gcSettings,#settings {
+	width: 0;
+	height: 0;
+	position: fixed;
+	background-color: var(--dark);
+	overflow: scroll;
+}
+#gcSettings {
+	z-index: 999;
+	bottom: 0;
+	left: 0;
+}
+#gcSettings .changeSettings {
+	margin-top: -10px;
+}
+#settings {
+	z-index: 10000;
+	top: 57px;
+	right: 0;
+}
+.gcImgDiv {
+  margin: auto;
+  margin-bottom: 10px;
+  display: block;
+  width: 50px;
+}
+
+.gcImgDiv:has(.gcImg:hover) p {
+  opacity: 1;
+  max-height: 50px;
+}
+
+.gcImgDiv p {
+  opacity: 0;
+  margin: 0px;
+  max-height: 0px;
+  transition-duration: 0.5s;
+	font-size: 15px;
+	word-wrap: break-word;
+}
+
+#inputbar {
+  position: fixed;
+  bottom: 0;
+  left: 70px;
+  width: 100%;
+  background-color: var(--darker);
+  height: 60px;
+}
+
+#messageBox {
+  margin-top: 10px;
+  width: calc(100% - 140px);
+  margin-left: 20px;
+}
+
+#send {
+  width: 40px;
+	height: 39px;
+  right: 30px;
+  bottom: 11px;
+  position: fixed;
+	background-color: transparent;
+	color: transparent;
+	border: none;
+	background-image: url(https://i.ibb.co/V25KQ9m/send-FILL0-wght400-GRAD0-opsz48.png);
+	background-position: center;
+	background-size: 75%;
+	background-repeat: no-repeat;
+	filter: invert(0.5);
+}
+
+#messageBox {
+  background-color: var(--black);
+  border: var(--primary) 1px solid;
+  box-shadow: var(--primary) 0px 0px 10px;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+#topbar {
+  background-color: var(--darker);
+  position: fixed;
+  left: 70px;
+  top: 57px;
+  width: calc(100% - 70px);
+  height: 30px;
+  padding-top: 10px;
+  padding-left: 10px;
+  color: var(--primary);
+  text-shadow: var(--primary) 0px 0px 10px;
+  font-size: 20px;
+  opacity: 1;
+}
+
+#messages {
+  left: 80px;
+  top: 97px;
+  height: calc(100% - 177px);
+  width: 100%;
+  position: fixed;
+  overflow-y: scroll;
+  opacity: 1;
+}
+.msg * {
+	user-select: auto !important;
+}
+
+.pfp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.msgTop {
+  position: absolute;
+  left: 50px;
+}
+
+.msgContent {
+  position: relative;
+  top: 40px;
+  left: 50px;
+}
+
+.msg {
+  padding-top: 20px;
+  margin-bottom: 40px;
+  position: relative;
+  width: calc(100% - 140px);
+}
+
+.msg.repeated {
+  padding-top: 0px;
+	margin-top: -30px;
+  margin-bottom: 40px;
+}
+
+.msgTime {
+  color: var(--light);
+  font-size: 12px;
+}
+
+.role {
+  font-weight: bold;
+}
+.changeSettings {
+	padding: 30px;
+	margin-top: -30px;
+}
+header {
+	font-size: 30px;
+	margin-bottom: 10px;
+	display: inline;
+}
+subheader {
+	font-size: 20px;
+	display: block;
+	margin-left: 10px;
+}
+.profileSettings {
+	padding: 20px;
+}
+.settingsPfp {
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
+}
+#settingsUsername {
+	font-size: 40px;
+	margin-left: 10px;
+	top: -25px;
+	position: relative;
+}
+#settings input[type="text"] {
+	margin-left: 10px;
+	border: none;
+	background-color: var(--dark);
+	padding: 10px;
+	height: 10px;
+	border-radius: 30px;
+	box-shadow: var(--primary) 0px 0px 10px;
+	margin: 10px;
+	width: calc(100% - 30px);
+}
+#gcSettings input[type="text"] {
+	margin-left: 10px;
+	border: none;
+	background-color: var(--dark);
+	padding: 10px;
+	height: 10px;
+	border-radius: 30px;
+	box-shadow: var(--primary) 0px 0px 10px;
+	margin: 10px;
+	width: calc(100% - 30px);
+}
+
+#inviteSettings input[type="text"] {
+	margin-left: 10px;
+	border: none;
+	background-color: var(--dark);
+	padding: 10px;
+	height: 10px;
+	border-radius: 30px;
+	box-shadow: var(--primary) 0px 0px 10px;
+	margin: 10px;
+	width: calc(100% - 50px);
+	pointer-events: auto;
+}
+label {
+	display: block;
+	margin-left: 30px;
+}
+
+input.colorPicker {
+	margin: 10px;
+	width: 50px;
+	height: 50px;
+	border: none;
+	border-radius: 50px;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+	border-radius: 50px;
+}
+
+input.checkbox {
+	margin-left: 10px;
+	padding: 10px;
+	height: 50px;
+	width: 50px;
+	border-radius: 50px;
+	border: none;
+	appearance: none;
+}
+
+.darkSwitch {
+	width: 50px;
+	height: 50px;
+	margin: 10px;
+	margin-top: -50px;
+	background-color: black;
+	border-radius: 50px;
+	background-image: url(https://i.ibb.co/25KLVvR/image-2.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 75%;
+}
+
+input.checkbox:checked + .darkSwitch {
+	background-color: white;
+	background-image: url(https://i.ibb.co/0q32dpS/light-mode-FILL1-wght400-GRAD0-opsz48.png);
+}
+
+.saveChanges {
+	background-color: var(--primary);
+	border: none;
+	padding: 5px;
+	border-radius: 10px;
+	color: white;
+	top: -3px;
+	position: relative;
+	left: 10px;
+	box-shadow: var(--primary) 0px 0px 10px;
+}
+
+#invButton {
+	z-index: 101;
+	top: 62px;
+	right: 15px;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	background-image: url(https://i.ibb.co/3rwhywd/group-add-FILL1-wght400-GRAD0-opsz48.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 75%;
+	color: transparent;
+	filter: invert(0.5);
+}
+
+#invButton:hover {
+	scale: 1.1;
+}
+
+#inviteSettings {
+	padding-top: 10px;
+	width: 200px;
+	height: 100px;
+	opacity: 0;
+	position: fixed;
+	background-color: var(--darker);
+	z-index: 100;
+	right: 0px;
+	top: 97px;
+	pointer-events: none;
+	padding-left: 25px;
+	border-bottom-left-radius: 10px;
+	padding-bottom: 30px;
+}
+
+#inviteSettings header {
+	font-size: 20px;
+}
+#inviteSettings button {
+	margin-top: 10px;
+	width: calc(100% - 30px);
+	pointer-events: auto;
+}
+
+.saveChanges.logout {
+	width: 75px;
+	height: 50px;
+	margin-top: 10px;
+}

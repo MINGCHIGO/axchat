@@ -1,0 +1,107 @@
+<html>
+
+  <head>
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script>
+    <script src="index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="navbar">
+        <logo>AxChat</logo>
+        <div id="settingsButton" onclick="settings()">
+        </div>
+      </div>
+      <div id="settings">
+        <div class="profileSettings">
+          <img class="settingsPfp">
+          <span id="settingsUsername"></span>
+        </div>
+        <div class="changeSettings">
+          <header>Edit Profile:</header>
+          <button type="button" class="saveChanges" onclick="saveProfile()">
+            Save Changes
+          </button>
+          <subheader>Password</subheader>
+          <input type="text" placeholder="Password" autocomplete="off" id="changePwd">
+          <subheader>Profile Picture</subheader>
+          <input type="text" placeholder="Profile Picture Link" id="changePfp">
+          <header>Edit Theme:</header>
+          <button type="button" class="saveChanges" onclick="saveTheme()">
+            Save Changes
+          </button>
+          <subheader>Primary Color</subheader><input type="color" class="colorPicker" id="primaryColorPick">
+          <subheader>Secondary Color</subheader><input type="color" class="colorPicker" id="secondaryColorPick">
+          <subheader>Dark/Light Mode</subheader><input type="checkbox" class="checkbox">
+          <div class="darkSwitch"></div>
+					<button type="button" class="saveChanges logout" onclick="logout()">
+					Log Out
+					</button>
+        </div>
+      </div>
+      <div id="gcSettings">
+        <div class="changeSettings">
+          <header>New Chat:</header>
+          <subheader>Name</subheader>
+          <input type="text" placeholder="Name" autocomplete="off" id="gcName">
+          <subheader>Picture</subheader>
+          <input type="text" placeholder="Chat Picture Link" autocomplete="off" id="gcPic">
+          <button type="button" class="saveChanges" style="margin-top: 10px;" onclick="newChat()">
+            New Chat
+          </button>
+        </div>
+      </div>
+      <div id="side">
+        <div id="sidebar"></div>
+        <div id="sideButton" onclick="gcSettings()">
+          <div id="sideText">
+            ＋
+          </div>
+        </div>
+      </div>
+      <div id="startup">
+        <div class="center">
+          <h1 id="loginHeader">
+            Log In
+          </h1>
+          <input type="text" id="usernameInput" placeholder="Username">
+          <input type="password" id="pwdInput" placeholder="Password">
+          <button type="button" style="width: 100px;background-color: var(--primary); cursor: pointer;" onclick="checkLogin()">Log In</button>
+          <div id="accountToggle">
+            <p>
+              No account?
+            </p>
+            <a onclick="toggleStartup()">Sign up!</a>
+          </div>
+        </div>
+      </div>
+      <div id="chat">
+        <div id="topbar">
+        </div>
+        <div id="invButton" onclick="inviteSettings()">
+          Invite
+        </div>
+        <div id="inviteSettings">
+          <header>Add User:</header>
+          <input type="text" autocomplete="off" placeholder="Username" id="inviteUsername">
+          <button type="button" onclick="inviteUser(document.querySelector('#inviteUsername').value, true)" class="saveChanges">
+            Add
+          </button>
+        </div>
+        <div id="messages">
+          <div id="bottomScroll">
+          </div>
+        </div>
+        <div id="inputbar">
+          <input id="messageBox" type="text" autocomplete="off">
+          <button id="send" onclick="send();">
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
